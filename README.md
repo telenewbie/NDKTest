@@ -58,3 +58,15 @@ RenderThread
 queued-work-loo
 ```
 通过结果可以看出如果线程执行完毕的话，则线程名称就会消失，如果把sleep的时间调长一点 那么就可以看到 在上面都会显示线程名称
+
+## 测试链接库中含有相同名称的函数时调用的顺序
+
+```Cmake
+target_link_libraries(
+        native-lib
+        ${log-lib}
+        first-lib  # 具有 invoke_mine 函数
+        second-lib # 具有 invoke_mine 函数
+        )
+```
+通过测试,发现 连接在前 则会被调用 [优先调用 先连接的] ，为啥不会出现符号重定义呢？

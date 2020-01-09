@@ -19,8 +19,8 @@ public abstract class BaseActivity extends Activity {
     private int[] colors = new int[]{
             Color.parseColor("#87CEFA"),
             Color.parseColor("#123456"),
-            Color.parseColor("#FF0"),
-            Color.parseColor("#0FF"),
+            Color.parseColor("#FFFF00"),
+            Color.parseColor("#00FFFF"),
             Color.parseColor("#654321")};
 
     Random random = new Random();

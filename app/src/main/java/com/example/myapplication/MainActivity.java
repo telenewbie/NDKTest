@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         final List<Map<String, String>> datas = new ArrayList<>();
         addItem(datas, "线程命名", v -> jumpToActivity(RenameThreadActivity.class));
         addItem(datas, "内存分配", v -> jumpToActivity(MemoryActivity.class));
+        addItem(datas, "C++特性", v -> jumpToActivity(TestCXXInvokeActivity.class));
 
         lv.setAdapter(new SimpleAdapter(this, datas, android.R.layout.simple_list_item_1, new String[]{"funName"}, new int[]{android.R.id.text1}));
         setContentView(lv);
