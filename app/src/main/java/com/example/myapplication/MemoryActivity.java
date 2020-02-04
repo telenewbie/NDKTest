@@ -28,8 +28,8 @@ public class MemoryActivity extends BaseActivity {
     @Override
     protected void initView() {
         mToast = new Toastor(this);
-        addButton("从Cpp中分配内存", v -> MemoryAlloc.allocByCXX(ALLOC_SIZE));
-        addButton("查看内存大小1 通过 /proc/meminfo", v -> MemoryUtil.printMemInfo());
+//        当系统可用内存很小（低于 MemTotal 的 10%）时，OOM、大量 GC、系统频繁自杀拉起等问题都非常容易出现。
+        addButton("查看系统内存状态1 通过 /proc/meminfo", v -> MemoryUtil.printMemInfo());
         addButton("查看内存大小2 [ActivityManager.getMemoryInfo]", v -> MemoryUtil.printMemoryInfo(this));
         int pid = Process.myPid();
         addButton("查看当前进程的内存大小1[/proc/" + pid + "/statm]", v -> {
@@ -56,6 +56,7 @@ public class MemoryActivity extends BaseActivity {
                 }
             }
         });
+        addButton("从Cpp中分配内存", v -> MemoryAlloc.allocByCXX(ALLOC_SIZE));
         addButton("从Android中分配内存", v -> MemoryAlloc.allocByJava(ALLOC_SIZE));
         addButton("从Android中分配Bitmap内存", v -> MemoryAlloc.allocByBitmap(ALLOC_SIZE));
     }

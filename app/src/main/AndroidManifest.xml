@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ThreadActivity"/>
+        <activity android:name=".HookActivity"></activity>
+        <activity android:name=".StackActivity" />
+        <activity android:name=".ThreadActivity" />
         <activity android:name=".ProxyActivity" />
         <activity android:name=".TestCXXInvokeActivity" />
         <activity android:name=".MemoryActivity" />

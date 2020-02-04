@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     // Used to load the 'native-lib' library on application startup.
     static {
         System.loadLibrary("native-lib");
+        System.loadLibrary("mystack");
     }
 
     @Override
@@ -33,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
         addItem(datas, "proxy 代理", v -> jumpToActivity(TestCXXInvokeActivity.class));
         addItem(datas, "Kotlin Thread Act", v -> jumpToActivity(ThreadActivity.class));
         addItem(datas, "android common 测试", v -> jumpToActivity(ThreadActivity.class));
+        addItem(datas, "堆栈测试", v -> jumpToActivity(StackActivity.class));
+        addItem(datas, "hook", v -> jumpToActivity(HookActivity.class));
+        addItem(datas, "stack ", v -> jumpToActivity(StackActivity.class));
 
         lv.setAdapter(new SimpleAdapter(this, datas, android.R.layout.simple_list_item_1, new String[]{"funName"}, new int[]{android.R.id.text1}));
         setContentView(lv);
