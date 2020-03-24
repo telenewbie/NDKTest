@@ -1,30 +1,82 @@
+//// Top-level build file where you can add configuration options common to all sub-projects/modules.
+//
+//buildscript {
+//    ext.kotlin_version = '1.3.50'
+//
+//    repositories {
+////        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+////        maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
+////        maven { url 'http://oss.jfrog.org/artifactory/oss-snapshot-local/' }
+//        google()
+//        jcenter()
+//    }
+//    dependencies {
+//        classpath 'com.android.tools.build:gradle:3.5.3'
+//
+//        // NOTE: Do not place your application dependencies here; they belong
+//        // in the individual module build.gradle files
+//        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+//        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+//    }
+//}
+//
+//allprojects {
+//    repositories {
+//        maven {
+//            url uri("http://nexus.txzing.com:8081/repository/maven-public/")
+//            credentials {
+//                username "txz_readonly"
+//                password "txz_readonly"
+//            }
+//        }
+//        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+//        maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
+//        maven { url 'http://maven.aliyun.com/nexus/content/repositories/google' }
+//
+//        maven { url 'http://oss.jfrog.org/artifactory/oss-snapshot-local/' }
+//        google()
+//        jcenter()
+//    }
+//}
+//
+//task clean(type: Delete) {
+//    delete rootProject.buildDir
+//}
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext.kotlin_version = '1.3.50'
-
+//    ext.kotlin_version = '1.3.50'
+    ext.kotlin_version = '1.3.61'
+    //https://stackoverflow.com/questions/57670510/how-to-get-rid-of-incremental-annotation-processing-requested-warning
+//    ext.kotlin_version = '1.3.41'
     repositories {
-//        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-//        maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
-//        maven { url 'http://oss.jfrog.org/artifactory/oss-snapshot-local/' }
         google()
         jcenter()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.3'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
-    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version" }
+    }
 }
 
 allprojects {
     repositories {
-//        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-//        maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
-//        maven { url 'http://oss.jfrog.org/artifactory/oss-snapshot-local/' }
-        google()
+        maven {
+            url uri('http://nexus.txzing.com/repository/maven-public/')
+            credentials {
+                username 'txz_readonly'
+                password 'txz_readonly'
+            }
+        }
+        maven { url "https://kotlin.bintray.com/kotlinx/" }
         jcenter()
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+        google()
     }
 }
 

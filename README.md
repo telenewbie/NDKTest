@@ -71,6 +71,22 @@ target_link_libraries(
 ```
 通过测试,发现 连接在前 则会被调用 [优先调用 先连接的] ，为啥不会出现符号重定义呢？
 
+
+## ButterKnife
+经过研读源码，大概的流程是这样的，通过`AbstractProcessor` 将标注进行处理，使用`javaPoet` 生成 `类名_ViewBinding.java` 文件,
+在经过ButterKnife.bind 进行构造，在构造的时候进行绑定与赋值，
+
+这就是为什么通过 @BindView 就可以不用写findViewById 的原因了。
+
+使用过程注意，如果采用 kotlin开发 使用butterKnife 的情况，需要修改为如下代码：
+```kotlin
+@BindView(R.id.button)
+lateinit var mBtn_test: Button
+
+implementation 'com.jakewharton:butterknife:10.2.1'
+kapt 'com.jakewharton:butterknife-compiler:10.2.1'
+```
+
 思考：
 
 在做内存分析的时候，发现每次都需要执行相应的指令去查看 `adb shell dumpsys meminfo [packagename]` 来查看 ，

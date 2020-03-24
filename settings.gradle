@@ -1,3 +1,7 @@
-include ':app'
-rootProject.name='My Application'
-include ':funTest'
+include ':app', ':PoetTest', ':annotation', ':annotationTwo', ':annotationThree', ':annotationOneProcess'
+//,
+//include ':USCDemo'
+//include ':testyzsso'
+//        ':xianlairemovead'
+//rootProject.name='My Application'
+//include ':funTest'
