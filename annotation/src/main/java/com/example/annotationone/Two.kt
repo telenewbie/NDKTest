@@ -1,4 +1,4 @@
-package com.example.annotationtwo
+package com.example.annotationone
 
 @Target(AnnotationTarget.CLASS)
 @kotlin.annotation.Retention(AnnotationRetention.SOURCE)
