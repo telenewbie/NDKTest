@@ -9,6 +9,9 @@ include_directories(include/unwind)
 add_subdirectory(other)
 add_subdirectory(hook)
 add_subdirectory(stack)
+add_subdirectory(google)
+add_subdirectory(txzlog)
+add_subdirectory(utils)
 
 add_library( # Sets the name of the library.
         native-lib
@@ -34,15 +37,10 @@ target_link_libraries( # Specifies the target library.
         # Links the target library to the log library
         # included in the NDK.
         ${log-lib}
-#        -Wl,--whole-archive
-#        -Wl,-Bstatic
         first-lib
-#        -Wl,-Bdynamic
-#        -Wl,--no-whole-archive
         second-lib
         -Wl,--whole-archive
         myhook
         -Wl,--no-whole-archive
         myhook_mem
-#        mystack
         )

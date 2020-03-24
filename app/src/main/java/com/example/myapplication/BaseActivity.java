@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,18 +28,47 @@ public abstract class BaseActivity extends Activity {
 
     Random random = new Random();
 
-    public void addButton(String name, View.OnClickListener listener) {
+    private int lastColorIndex = -1;
+
+    private void initLinearLayout() {
         if (linearLayout == null) {
             linearLayout = new LinearLayout(this);
             linearLayout.setOrientation(LinearLayout.VERTICAL);
             linearLayout.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
         }
+    }
+
+    public void addButton(String name, View.OnClickListener listener) {
+        initLinearLayout();
         Button button = new Button(this);
         button.setText(name);
         button.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-        button.setBackgroundColor(colors[random.nextInt(colors.length)]);
+
+        button.setBackgroundColor(colors[getColorIndex()]);
         button.setOnClickListener(new ProxyClickListener(listener, name));
         linearLayout.addView(button);
+    }
+
+    public void addText(String name) {
+        initLinearLayout();
+        TextView tv = new TextView(this);
+        tv.setText(name);
+//        tv.setHeight();
+        tv.setGravity(Gravity.CENTER);
+        linearLayout.addView(tv);
+    }
+
+    private int getColorIndex() {
+        int i = random.nextInt(colors.length);
+        if (i == lastColorIndex) {
+            lastColorIndex++;
+        } else {
+            lastColorIndex = i;
+        }
+        if (lastColorIndex >= colors.length) {
+            lastColorIndex = 0;
+        }
+        return lastColorIndex;
     }
 
     /**
@@ -46,17 +76,13 @@ public abstract class BaseActivity extends Activity {
      *
      * @param name
      */
-    public EditText addInputLineText(String name,String hint) {
-        if (linearLayout == null) {
-            linearLayout = new LinearLayout(this);
-            linearLayout.setOrientation(LinearLayout.VERTICAL);
-            linearLayout.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
-        }
+    public EditText addInputLineText(String name, String hint) {
+        initLinearLayout();
         // xxxx:_________ 的形式
         LinearLayout ll = new LinearLayout(this);
         ll.setOrientation(LinearLayout.HORIZONTAL);
         ll.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-        ll.setBackgroundColor(colors[random.nextInt(colors.length)]);
+        ll.setBackgroundColor(colors[getColorIndex()]);
 
         TextView tv = new TextView(this);
         tv.setText(name);
