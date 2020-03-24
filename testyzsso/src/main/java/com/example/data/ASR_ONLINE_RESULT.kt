@@ -1,3 +1,5 @@
+package com.example.data
+
 data class ASR_ONLINE_RESULT(
     val asr_recongize: String,
     val code: String,

@@ -1,0 +1,110 @@
+{
+	"name":	"Unisound VUI config",
+	"version":	"v1.0",
+	"lasr":	{
+		"lasr_wkp":	{
+			"wakeup_word":	"你好小踢",
+			"eng":	{
+				"mode":	2,
+				"skip_frame":	1,
+				"log_en":	1,
+				"model_id":	53,
+				"std_threshold":	"-20",
+				"lp_threshold":	"55",
+				"domain":	"wakeup",
+				"path":	"/sdcard/models"
+			}
+		},
+		"lasr_asr":	{
+			"timeout":	0,
+			"eng":	{
+				"mode":	2,
+				"skip_frame":	1,
+				"log_en":	1,
+				"model_id":	53,
+				"std_threshold":	"-1.2",
+				"lp_threshold":	"55",
+				"domain":	"txzStart",
+				"path":	"/sdcard/models"
+			}
+		},
+		"databuf_timems":	500,
+		"save_record":	0,
+		"save_path":	"."
+	},
+	"rasr":	{
+		"protocol":	1,
+		"codec":	2,
+		"timeout":	0,
+		"sync":	0,
+		"save_file":	0,
+		"self_res":	1,
+		"databuf_len":	154800,
+		"net_timeout":	"3500",
+		"client_name":	"gree10",
+		"save_path":	".",
+		"tcp_con_type":  0,
+		"tcp_translate":  0,
+		"ser":	{
+			"appkey":	"m7f2yiysgyyi6lfw4izubmyufrokzvhzp6zrolqq",
+			"seckey":	"8256d4ec38fe0bf9cf0ea3d13aec8f0e",
+			"domain":	"home,song,ysdw",
+			"subdomain":	"home<ac>",
+			"field":	"far",
+			"nlu":  "ver=3.0;scenario=smarthome;filterName=nlu2;returnType=json;appendLength=1;",
+			"pass":	"",
+			"ip":	1552505976,	
+			"port":	80,
+			"filter_url":  "",
+			"dp_name":  "",
+			"additional_service":  "",
+			"scenario":  "translation"
+		}
+
+	},
+	"tts":	{
+		"host":	691108213,
+		"port":	80,
+		"protocol":	1,
+		"encode":	2,
+		"spd":	50,
+		"vol":	100,
+		"pit":	50,
+		"emt":	100,
+		"smt":	100,
+		"save_file":	0,
+		"appkey":	"m7f2yiysgyyi6lfw4izubmyufrokzvhzp6zrolqq",
+		"secretkey":	"8256d4ec38fe0bf9cf0ea3d13aec8f0e",
+		"speaker":	"xiaowen",
+		"save_path":	"."
+	},
+	"vad":	{
+		"enable":	1,
+		"mode":	0,
+		"back_silence":	40,
+		"vad_st_enable":	1,
+		"vad_end_enable":	1,
+		"silence_timeout":	0,
+		"voice_timeout":	0,
+		"vad_pre_time":	500,
+		"save_record":	0,
+		"save_path":	"."
+	},
+	"rec":	{
+		"sav_org_flg":	0,
+		"sav_als_flg":	0,
+		"sav_sed_flg":	0,
+		"sav_rec_pth":	"null"
+	},
+	"log":	{
+		"way":	2,
+		"level":	6,
+		"file":	"/sdcard/ivm.log"
+	},
+	"capture":	{
+		"audio_timeout":	16000,
+		"channels":	1,
+		"bit":	16,
+		"frequency":	16000
+	}
+}
